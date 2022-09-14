@@ -6,7 +6,7 @@ const mongoString = process.env.DATABASE_URL;
 
 //connect to database
 mongoose.connect(mongoString);
-
+const database = mongoose.connection;
 //print error
 database.on('err', (err) => {
     console.log(err)
@@ -24,10 +24,15 @@ app.use(cors());
 //use json
 app.use(express.json());
 
-const userRoute = require('link to user route');
+const userRoute = require('./routes/user.route');
+const postRoute = require('./routes/post.route');
+const commentRoute = require('./routes/comment.route');
 
 app.use('/user', userRoute);
+app.use('/post', postRoute);
+app.use('/comment', commentRoute);
 
-const PORT = process.env.PORTapp.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`)
-})
+const PORT = process.env.PORT
+    app.listen(PORT, () => {
+        console.log(`Server is running on port ${PORT}`)
+    })

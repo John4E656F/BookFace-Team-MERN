@@ -1,7 +1,7 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
 
-const userDB = mongoose.createConnection(process.env.DATABASE_URL + `user`)
+const userDB = mongoose.createConnection(process.env.DATABASE_URL + `BookFace`)
 const Users = userDB.model(
     "Users",
     new mongoose.Schema({
@@ -26,14 +26,14 @@ const Users = userDB.model(
             min: 3,
             max: 20,
         },
-        userhandler: {
+        userhandle: {
             type: String,
             required: true,
             trim: true,
             unique: true,
         },
         email: {
-            trpe: String,
+            type: String,
             required: true,
             trim: true,
             unique: true,
@@ -43,25 +43,24 @@ const Users = userDB.model(
             required: true,
             trim: true
         },
-        profilePicture: {
-            type: Array,
-            required: true,
+        profilepicture: {
+            type: String,
         },
         bio: String,
-        role: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Role',
-            default: 'Basic',
-        },
-        timestamps: {
-            createdAt: 'created_at',
-            updatedAt: 'updated_at',
-        },
+        // role: {
+        //     type: mongoose.Schema.Types.ObjectId,
+        //     ref: 'Role',
+        //     default: 'Basic',
+        // },
+        // timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' },
         hidden: {
             type: Boolean,
             default: false,
         },
-    }, { collection: 'users' })
+    }, { 
+        collection: 'users',
+        timestamps: true,
+        })
 );
 
 module.exports = Users;
