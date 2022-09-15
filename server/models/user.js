@@ -19,7 +19,7 @@ const Users = userDB.model(
         },
         username: {
             type: String,
-            required: [true, "can't be empty"],
+            required: [false, "can't be empty"],
             match: [/^[a-zA-Z0-9]+$/, 'is invalid'],
             trim: true,
             unique: true,
@@ -28,7 +28,7 @@ const Users = userDB.model(
         },
         userhandle: {
             type: String,
-            required: true,
+            required: false,
             trim: true,
             unique: true,
         },
@@ -45,6 +45,7 @@ const Users = userDB.model(
         },
         profilepicture: {
             type: String,
+            required: false,
         },
         bio: String,
         // role: {

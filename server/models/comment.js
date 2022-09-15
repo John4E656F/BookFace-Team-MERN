@@ -11,7 +11,7 @@ const Comments = commentDB.model(
             required: true,
             trim: true,
         },
-        post_id: {
+        post_id: {   
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Post',
             required: true,

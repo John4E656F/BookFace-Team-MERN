@@ -38,8 +38,8 @@ const handleLogin = async (req, res) => {
             return;
         }
     } catch (err) {
-        res.stauts(400).json({
-            rerro: true,
+        res.status(400).json({
+            error: true,
             success: false,
             message: "Something went wrong" + err,
         });
